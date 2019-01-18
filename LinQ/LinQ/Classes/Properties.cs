@@ -8,6 +8,8 @@ namespace LinQ.Classes
 {
     public class Properties
     {
+        internal object neighborhoods;
+
         [JsonProperty("zip")]
         public string zip { get; set; }
         [JsonProperty("city")]
