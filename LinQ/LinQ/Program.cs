@@ -10,8 +10,6 @@ namespace LinQ
     {
         public static void Main(string[] args)
         {
-            //C: \Users\jason\Source\Repos\LinQ\LinQ.JSON
-
             string path = "../../../../../LinQ.JSON";
             Console.WriteLine("Hello World!");
             FeaturesJS(path);
@@ -19,18 +17,20 @@ namespace LinQ
 
         public static void FeaturesJS(string path)
         {
-            string data = "";
+            var data = "";
             using (StreamReader sr = File.OpenText(path))
             {
                 data = sr.ReadToEnd();
             }
-            Feature feature = JsonConvert.DeserializeObject<Feature>(data);
 
+            
+            RootObject root = JsonConvert.DeserializeObject<RootObject>(data);
 
+            Console.WriteLine(root.features[1].properties.neighborhood);
 
-            //IEnumerable<string> neighborhoods = from n in feature.properties
-            //                                    where n.Contains(neighborhood)
-            //                                    select n;
+            var Neighborhoods = from n in root
+                              select n;
+                              
 
         }
     }
